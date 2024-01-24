@@ -1,141 +1,25 @@
 <app-header></app-header>
 <div class="container">
     <div class="intro-section">
-        <h1>Đây là trang home</h1>
-        <p>Trang này hiển thị danh sách các sản phẩm, kèm ảnh</p>
-        <p>Các bạn có thể chọn xem sản phẩm và mua hàng tại đây</p>
+        <img class="img-section" src="https://images.ctfassets.net/hrltx12pl8hq/4ACnMj4WVSOZRZt0jHu9h5/1506f652bcd70f4dc3e88219fefea858/shutterstock_739595833-min.jpg?fit=fill&w=1200&h=630" alt="">
+    </div>
+    <div class="category-sy">
+        <div class="symbol-img">
+            <a href="#" *ngFor="let category of categories"><img class="item" [src]="category.url_img" altt="Image"></a>
+
+        </div>
     </div>
     <div class="search-box">
         <input type="text" class="form-control search-input" placeholder="Tên sản phẩm">
-        <select class="form-control product-categories" name="" id="">
-            <option selected disabled>Danh mục sản phẩm</option>
-            <option value="">Đồ điện tử</option>
-            <option value="">Đồ điện tử</option>
-            <option value="">Đồ điện tử</option>
-        </select>
     </div>
     <div class="row">
-        <div class="col-lg-4 col-md-6">
+        <div *ngFor="let product of products" class="col-lg-4 col-md-6">
             <div class="product-item">
-                <img class="product-img" src="https://xuonggomsuviet.vn/wp-content/uploads/2019/12/y-nghia-hinh-tuong-con-meo-trong-van-hoa-dan-gian-5.jpg" alt="">
-                <h3 class="product-name">Product 1</h3>
-                <p class="product-descript">Lorem ipsum dolor sit amet, consectetur elit</p>
+                <img class="product-img" [src]="product.url_img" alt="Image">
+                <h3 class="product-name">{{product.nameProduct}}</h3>
+                <p class="product-descript">{{product.description}}</p>
                 <p class="product-warranty">Bảo hành: 12 tháng</p>
-                <p class="product-price">Giá: $100</p> 
-                <div class="product-rating">
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star-half-alt"></i>
-                </div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" style="margin-right: 5px;">Thêm vào giỏ hàng</button>
-                    <button class="btn btn-success">Mua ngay</button>
-                </div>   
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="product-item">
-                <img class="product-img" src="https://xuonggomsuviet.vn/wp-content/uploads/2019/12/y-nghia-hinh-tuong-con-meo-trong-van-hoa-dan-gian-5.jpg" alt="">
-                <h3 class="product-name">Product 1</h3>
-                <p class="product-descript">Lorem ipsum dolor sit amet, consectetur elit</p>
-                <p class="product-warranty">Bảo hành: 12 tháng</p>
-                <p class="product-price">Giá: $100</p> 
-                <div class="product-rating">
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star-half-alt"></i>
-                </div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" style="margin-right: 5px;">Thêm vào giỏ hàng</button>
-                    <button class="btn btn-success">Mua ngay</button>
-                </div>   
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="product-item">
-                <img class="product-img" src="https://xuonggomsuviet.vn/wp-content/uploads/2019/12/y-nghia-hinh-tuong-con-meo-trong-van-hoa-dan-gian-5.jpg" alt="">
-                <h3 class="product-name">Product 1</h3>
-                <p class="product-descript">Lorem ipsum dolor sit amet, consectetur elit</p>
-                <p class="product-warranty">Bảo hành: 12 tháng</p>
-                <p class="product-price">Giá: $100</p> 
-                <div class="product-rating">
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star-half-alt"></i>
-                </div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" style="margin-right: 5px;">Thêm vào giỏ hàng</button>
-                    <button class="btn btn-success">Mua ngay</button>
-                </div>   
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="product-item">
-                <img class="product-img" src="https://xuonggomsuviet.vn/wp-content/uploads/2019/12/y-nghia-hinh-tuong-con-meo-trong-van-hoa-dan-gian-5.jpg" alt="">
-                <h3 class="product-name">Product 1</h3>
-                <p class="product-descript">Lorem ipsum dolor sit amet, consectetur elit</p>
-                <p class="product-warranty">Bảo hành: 12 tháng</p>
-                <p class="product-price">Giá: $100</p> 
-                <div class="product-rating">
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star-half-alt"></i>
-                </div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" style="margin-right: 5px;">Thêm vào giỏ hàng</button>
-                    <button class="btn btn-success">Mua ngay</button>
-                </div>   
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="product-item">
-                <img class="product-img" src="https://xuonggomsuviet.vn/wp-content/uploads/2019/12/y-nghia-hinh-tuong-con-meo-trong-van-hoa-dan-gian-5.jpg" alt="">
-                <h3 class="product-name">Product 1</h3>
-                <p class="product-descript">Lorem ipsum dolor sit amet, consectetur elit</p>
-                <p class="product-warranty">Bảo hành: 12 tháng</p>
-                <p class="product-price">Giá: $100</p> 
-                <div class="product-rating">
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star-half-alt"></i>
-                </div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" style="margin-right: 5px;">Thêm vào giỏ hàng</button>
-                    <button class="btn btn-success">Mua ngay</button>
-                </div>   
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="product-item">
-                <img class="product-img" src="https://xuonggomsuviet.vn/wp-content/uploads/2019/12/y-nghia-hinh-tuong-con-meo-trong-van-hoa-dan-gian-5.jpg" alt="">
-                <h3 class="product-name">Product 1</h3>
-                <p class="product-descript">Lorem ipsum dolor sit amet, consectetur elit</p>
-                <p class="product-warranty">Bảo hành: 12 tháng</p>
-                <p class="product-price">Giá: $100</p> 
-                <div class="product-rating">
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star"></i>
-                    <i class="fa-sharp fa-solid fa-star-half-alt"></i>
-                </div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" style="margin-right: 5px;">Thêm vào giỏ hàng</button>
-                    <button class="btn btn-success">Mua ngay</button>
-                </div>   
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="product-item">
-                <img class="product-img" src="https://xuonggomsuviet.vn/wp-content/uploads/2019/12/y-nghia-hinh-tuong-con-meo-trong-van-hoa-dan-gian-5.jpg" alt="">
-                <h3 class="product-name">Product 1</h3>
-                <p class="product-descript">Lorem ipsum dolor sit amet, consectetur elit</p>
-                <p class="product-warranty">Bảo hành: 12 tháng</p>
-                <p class="product-price">Giá: $100</p> 
+                <p class="product-price">Giá: {{product.price.toLocaleString('vi-VN',{ style: 'currency', currency: 'VND' })}}</p> 
                 <div class="product-rating">
                     <i class="fa-sharp fa-solid fa-star"></i>
                     <i class="fa-sharp fa-solid fa-star"></i>
