@@ -1,7 +1,9 @@
 <app-header></app-header>
 <div class="container">
     <div class="intro-section">
-        <img class="img-section" src="https://images.ctfassets.net/hrltx12pl8hq/4ACnMj4WVSOZRZt0jHu9h5/1506f652bcd70f4dc3e88219fefea858/shutterstock_739595833-min.jpg?fit=fill&w=1200&h=630" alt="">
+        <img class="img-section"
+            src="https://images.ctfassets.net/hrltx12pl8hq/4ACnMj4WVSOZRZt0jHu9h5/1506f652bcd70f4dc3e88219fefea858/shutterstock_739595833-min.jpg?fit=fill&w=1200&h=630"
+            alt="">
     </div>
     <div class="category-sy">
         <div class="symbol-img">
@@ -11,15 +13,19 @@
     </div>
     <div class="search-box">
         <input type="text" class="form-control search-input" placeholder="Tên sản phẩm">
+        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
     <div class="row">
         <div *ngFor="let product of products" class="col-lg-4 col-md-6">
             <div class="product-item">
-                <img class="product-img" [src]="product.url_img" alt="Image">
-                <h3 class="product-name">{{product.nameProduct}}</h3>
-                <p class="product-descript">{{product.description}}</p>
+                <div class="detail-pr" (click)="goToDetailProduct(product.id)">
+                    <img class="product-img" [src]="product.url_img" alt="Image">
+                    <h3 class="product-name">{{product.nameProduct}}</h3>
+                    <p class="product-descript">{{product.description}}</p>
+                </div>
                 <p class="product-warranty">Bảo hành: 12 tháng</p>
-                <p class="product-price">Giá: {{product.price.toLocaleString('vi-VN',{ style: 'currency', currency: 'VND' })}}</p> 
+                <p class="product-price">Giá: {{product.price.toLocaleString('vi-VN',{ style: 'currency', currency:
+                    'VND' })}}</p>
                 <div class="product-rating">
                     <i class="fa-sharp fa-solid fa-star"></i>
                     <i class="fa-sharp fa-solid fa-star"></i>
@@ -29,9 +35,14 @@
                 <div class="product-actions">
                     <button class="btn btn-primary" style="margin-right: 5px;">Thêm vào giỏ hàng</button>
                     <button class="btn btn-success">Mua ngay</button>
-                </div>   
+                </div>
             </div>
         </div>
+    </div>
+    <div class="pagination">
+        <a *ngIf="this.curentPage!=0" (click)="loadProducts(this.curentPage-1,this.limit)">&laquo;</a>
+        <a *ngFor="let page of pages" (click)="loadProducts(page,this.limit)">{{page+1}}</a>
+        <a *ngIf="this.curentPage!=this.pages.length-1" (click)="loadProducts(this.curentPage+1,this.limit)">&raquo;</a>
     </div>
 </div>
 <app-footer></app-footer>

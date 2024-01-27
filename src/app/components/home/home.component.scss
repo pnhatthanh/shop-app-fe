@@ -3,13 +3,15 @@
     color: white;
     margin-bottom: 7px;
 }
-.category-sy{
+
+.category-sy {
     background-color: rgb(39, 43, 84);
     border-radius: 10px;
     padding: 30px 10px;
     margin-bottom: 20px;
 }
-.symbol-img{
+
+.symbol-img {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -17,16 +19,18 @@
     align-content: space-around;
     gap: 10px;
 }
-.item{
+
+.item {
     border: 2px solid rgb(97, 96, 96);
     border-radius: 20px;
     width: 170px;
 }
-.item:hover{
+
+.item:hover {
     border: 2px solid rgb(255, 0, 0);
 }
 
-.img-section{
+.img-section {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -40,13 +44,36 @@
     margin-bottom: 20px;
 }
 
-
 .search-input {
     width: 300px;
     background-color: rgb(19, 23, 42);
-    margin-right: 10px;
     border-color: rgba(255, 255, 255, 0.5);
     color: white;
+    border-right: none;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.fa-magnifying-glass {
+    height: 33px;
+    width: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+}
+
+.search-btn {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    padding-bottom: 2px;
+}
+
+.search-btn:hover {
+    cursor: pointer;
+    background-color: rgb(75, 53, 96);
 }
 
 .form-control {
@@ -67,10 +94,13 @@
     margin-bottom: 20px;
 }
 
+
 .product-img {
     width: 100%;
     height: 250px;
     margin-bottom: 10px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .product-name {
@@ -81,7 +111,10 @@
 .product-descript {
     color: rgb(173, 178, 203);
 }
-
+.detail-pr:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
 .product-warranty {
     color: rgb(242, 126, 212);
 }
@@ -100,8 +133,32 @@
     justify-content: center;
     margin-top: 20px;
 }
+
 .product-categories {
     width: 200px;
     color: rgb(255, 255, 255);
     background-color: rgb(20, 24, 73);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a:active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    color: black;
+    cursor: pointer;
 }
