@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { DetailProduct } from '../responses/DetailProduct';
+import { ProductImg } from '../responses/ProductImage';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,8 @@ export class ProductService {
   }
   getDetailproduct(id:number):Observable<DetailProduct>{
     return this.http.get<DetailProduct>(`http://localhost:8080/api/v1/products/${id}`);
+  }
+  getAllImg(id:number):Observable<ProductImg[]>{
+    return this.http.get<ProductImg[]>(`http://localhost:8080/api/v1/products/image/${id}`);
   }
 }
