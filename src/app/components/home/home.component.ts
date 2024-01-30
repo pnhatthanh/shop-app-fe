@@ -7,6 +7,8 @@ import { Product } from '../../responses/Product';
 import { ProductService } from '../../services/product.service';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../responses/category';
+import { CartService } from '../../services/cart.service';
+import { Item } from '../../dtos/item';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +26,8 @@ export class HomeComponent implements OnInit {
   limit: number = 12;
   constructor(private router: Router,
     private productService: ProductService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private cartService:CartService
   ) { }
   ngOnInit(): void {
     this.loadProducts(this.curentPage, this.limit);
@@ -73,5 +76,13 @@ export class HomeComponent implements OnInit {
   }
   goToDetailProduct(id:number){
     this.router.navigate(['/detail_product',id]);
+  }
+
+  addToCart(id:number){
+     const item:Item={
+      'idProduct':id,
+      'quantity':1
+     };
+     this.cartService.addToCart(item);
   }
 }
