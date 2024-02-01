@@ -4,5 +4,6 @@ export interface Product{
     price:number,
     thumbnail:string,
     description:string,
-    url_img:string
+    url_img:string,
+    quantity:number;
 }

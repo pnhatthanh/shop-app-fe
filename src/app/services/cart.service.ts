@@ -30,7 +30,11 @@ export class CartService {
     curent_cart.push(item);
     this.saveCart(curent_cart);
   }
-  
+   deleteItem(id:number){
+    const currenCart=this.getCart();
+    const updatedCart = currenCart.filter(item => item.idProduct !== id);
+    this.saveCart(updatedCart);
+   }
   clearCart(){
     localStorage.removeItem(this.my_cart);
   }

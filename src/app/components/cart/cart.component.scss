@@ -1,6 +1,6 @@
 .container{
     color: white;
-    height: 100vh;
+    //height: 100vh;
 }
 .intro-section {
     margin-left: auto;
@@ -28,10 +28,7 @@ td{
     padding: 10px;
     text-align: center;
 }
-.product-info{
-    display: flex;
-    align-items: center;
-}
+
 .product-image{
     width: 100px;
     height: 100px;
@@ -40,7 +37,15 @@ td{
 }
 .product-name{
     color: white;
-    margin-right: 10px;
+    font-size: 18px;
+}
+.fa-pen-to-square:hover{
+    cursor: pointer;
+    color: rgb(20, 212, 234);
+}
+.fa-trash:hover{
+    cursor: pointer;
+    color: rgb(242, 59, 59);
 }
 .btn-gradient{
     background: linear-gradient(to right,rgb(225,64,180),rgb(126,43,237));
@@ -49,5 +54,14 @@ td{
     width: 200px;
 }
 .btn-gradient:hover{
-    background: linear-gradient(to right,rgb(237, 19, 175),rgb(109, 12, 234));
+    background: linear-gradient(to right,rgb(237, 19, 175),rgb(111, 12, 234));
+}
+.btn-pay{
+    background: linear-gradient(to right,rgb(231, 31, 174),rgb(118, 26, 239));
+    color: white;
+    border-radius: 30px;
+    width: 200px;
+}
+.btn-pay:hover{
+    background: linear-gradient(to right,rgb(255, 0, 183),rgb(111, 0, 255));
 }
