@@ -85,4 +85,12 @@ export class HomeComponent implements OnInit {
      };
      this.cartService.addToCart(item);
   }
+
+  toBuy(id:number){
+    const items: Item[] = [
+      { idProduct:id,quantity:1 }
+    ];
+    console.log(items);
+    this.router.navigate(['/order'], { queryParams: { items: JSON.stringify(items) } });
+  }
 }

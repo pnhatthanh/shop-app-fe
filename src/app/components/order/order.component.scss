@@ -21,9 +21,15 @@
 .form-label{
     color: white;
 }
-
+.note-area{
+    height: 100px;
+}
+.note-area::placeholder{
+    color: rgb(120, 115, 115);
+}
 .order-header{
     color: rgb(185, 244, 181);
+    margin-bottom: 35px;
 }
 table{
     width: 100%;
@@ -59,11 +65,30 @@ td{
 .text-dis{
     color: white;
 }
+.method-act{
+    display: flex;
+}
+.option{
+    
+    margin-left: 20px;
+}
+.shipping{
+    display: flex;
+}
+.shipping-method{
+    width: 50%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-left: 20px;
+}
+.form-check-label{
+    margin-left: 10px;
+}
 .btn-gradient{
     background: linear-gradient(to right,rgb(225,64,180),rgb(126,43,237));
     color: white;
     border-radius: 30px;
-    width: 200px;
+    width: 50%
 }
 .btn-gradient:hover{
     background: linear-gradient(to right,rgb(237, 19, 175),rgb(109, 12, 234));

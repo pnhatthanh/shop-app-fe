@@ -34,7 +34,7 @@
                 </div>
                 <div class="product-actions">
                     <button (click)="addToCart(product.id)" class="btn btn-primary" style="margin-right: 5px;">Thêm vào giỏ hàng</button>
-                    <button class="btn btn-success">Mua ngay</button>
+                    <button (click)="toBuy(product.id)" class="btn btn-success">Mua ngay</button>
                 </div>
             </div>
         </div>
