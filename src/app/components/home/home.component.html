@@ -7,8 +7,8 @@
     </div>
     <div class="category-sy">
         <div class="symbol-img">
-            <a href="#" *ngFor="let category of categories"><img class="item" [src]="category.url_img" altt="Image"></a>
-
+            <a href="#" *ngFor="let category of categories"><img class="item" [src]="category.url_img" altt="Image"
+                (click)="searchProducts(category.id,'')"></a>
         </div>
     </div>
     <div class="search-box">

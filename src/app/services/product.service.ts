@@ -28,4 +28,15 @@ export class ProductService {
   getProductById(id:number):Observable<Product>{
     return this.http.get<Product>(`http://localhost:8080/api/v1/products/${id}`);
   }
+
+  searchProducts(page: number, limit: number, idCategory: number, keyword: string): Observable<any[]> {
+    const params = {
+      page: page.toString(),
+      limit: limit.toString(),
+      category: idCategory.toString(),
+      nameProduct: keyword.toString()
+    };
+    return this.http.get<any[]>('http://localhost:8080/api/v1/products/search', { params: params });
+  }
+  
 }

@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   toltalItems:number=0;
   pages: number[]=[];
   limit: number = 12;
+  idCategory:number=0;
+  keyword:string="";
   constructor(private router: Router,
     private productService: ProductService,
     private categoryService: CategoryService,
@@ -53,7 +55,35 @@ export class HomeComponent implements OnInit {
         debugger
       }
     })
+  }  
+
+  searchProducts(idCategory:number, keyword:string){
+    this.idCategory=idCategory;
+    this.keyword=keyword;
+    this.getProducts();
   }
+
+  getProducts():void{
+    this.productService.searchProducts(this.curentPage, this.limit,this.idCategory,this.keyword).subscribe({
+      next: (data: any) => {
+        debugger
+        this.toltalItems = data.totalElements;
+        this.caculatePage();
+        this.products = data.content;
+        for (let product of this.products) {
+          product.url_img = `http://localhost:8080/api/v1/products/thumbnail/${product.thumbnail}`;
+        }
+      },
+      error: (error: any) => {
+        alert(`Cannot load product, error: ${error.error}`);
+      },
+      complete: () => {
+        debugger
+      }
+    })
+  }
+
+
   caculatePage():void{
     const totalPages=Math.ceil(this.toltalItems/this.limit);
     this.pages=Array.from({length:totalPages},(_, i)=>i);
