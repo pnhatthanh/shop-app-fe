@@ -6,14 +6,15 @@
             alt="">
     </div>
     <div class="category-sy">
-        <div class="symbol-img">
-            <a href="#" *ngFor="let category of categories"><img class="item" [src]="category.url_img" altt="Image"
-                (click)="searchProducts(category.id,'')"></a>
+        <div class="symbol-img" >
+            <a *ngFor="let category of categories"><img class="item" [src]="category.url_img" altt="Image"
+                (click)="searchProducts(category.id)"></a>
         </div>
     </div>
     <div class="search-box">
-        <input type="text" class="form-control search-input" placeholder="Tên sản phẩm">
-        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="text" class="form-control search-input" placeholder="Tên sản phẩm"
+         [(ngModel)]="keyword" name="keyword">
+        <button class="search-btn" (click)="searchProducts(this.idCategory)"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
     <div class="row">
         <div *ngFor="let product of products" class="col-lg-4 col-md-6">

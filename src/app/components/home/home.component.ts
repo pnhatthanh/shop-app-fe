@@ -9,11 +9,12 @@ import { CategoryService } from '../../services/category.service';
 import { Category } from '../../responses/category';
 import { CartService } from '../../services/cart.service';
 import { Item } from '../../dtos/item';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FooterComponent, HeaderComponent, CommonModule, RouterModule],
+  imports: [FooterComponent, HeaderComponent, CommonModule, RouterModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -37,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadProducts(page: number, limit: number): void {
-    this.productService.getProducts(page, limit).subscribe({
+    this.productService.searchProducts(page, limit,this.idCategory,this.keyword).subscribe({
       next: (data: any) => {
         debugger
         this.curentPage=page;
@@ -57,32 +58,10 @@ export class HomeComponent implements OnInit {
     })
   }  
 
-  searchProducts(idCategory:number, keyword:string){
-    this.idCategory=idCategory;
-    this.keyword=keyword;
-    this.getProducts();
+  searchProducts(category:number){
+    this.idCategory=category;
+   this.loadProducts(0,this.limit);
   }
-
-  getProducts():void{
-    this.productService.searchProducts(this.curentPage, this.limit,this.idCategory,this.keyword).subscribe({
-      next: (data: any) => {
-        debugger
-        this.toltalItems = data.totalElements;
-        this.caculatePage();
-        this.products = data.content;
-        for (let product of this.products) {
-          product.url_img = `http://localhost:8080/api/v1/products/thumbnail/${product.thumbnail}`;
-        }
-      },
-      error: (error: any) => {
-        alert(`Cannot load product, error: ${error.error}`);
-      },
-      complete: () => {
-        debugger
-      }
-    })
-  }
-
 
   caculatePage():void{
     const totalPages=Math.ceil(this.toltalItems/this.limit);

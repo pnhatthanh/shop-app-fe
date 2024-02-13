@@ -10,6 +10,7 @@ import { LoginResponse } from '../../responses/LoginResponse';
 import { TokenService } from '../../services/token.service';
 import { RoleService } from '../../services/role.service';
 import { Role } from '../../responses/role';
+import { UserDetails } from '../../responses/UserDetails';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -51,19 +52,38 @@ export class LoginComponent implements OnInit {
       'password':this.password,
       'roleId':this.selectedRole?.id ?? 0
     }
-    //016764566
-    //123123
     this.userService.login(loginDto).subscribe({
       next: (response: LoginResponse) => {
-        debugger
         const {token}=response;
         this.tokenService.setToken(token);
-        this.router.navigate(['/'])
+        this.userService.getUserDetail(token).subscribe({
+          next: (response:any)=>{
+            const userDetails:UserDetails={
+              id:response.id,
+              fullName:response.fullName,
+              dateOfBirth:new Date(response.dateOfBirth),
+              phoneNumber:response.phoneNumber,
+              address:response.address,
+              facebookAccountId:response.facebookAccountId,
+              googleAccountId:response.googleAccountId
+            };
+            this.userService.saveUsertoLocalStorage(userDetails);
+            this.router.navigate(['/'])
+          },
+          error: (error: any) => {
+            debugger;
+            alert(error.error.message);
+          },
+          complete:()=>{}
+        })  
       },
-      error:(error:any)=>{
-        (alert(`Cannot login!, error: ${error.error}`));
-        },
-      complete:()=>{debugger}
+      complete: () => {
+        debugger;
+      },
+      error: (error: any) => {
+        debugger;
+        alert(error.error.message);
+      }
     })
   }
 }
