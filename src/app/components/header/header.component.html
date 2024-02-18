@@ -20,17 +20,17 @@
               Giỏ hàng
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login">
+          <li class="nav-item" *ngIf="user">
+            <a class="nav-link" routerLink="/">
               <i class="fa-solid fa-check-to-slot"></i>
               Kiểm tra đơn hàng
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="user==null">
             <a class="nav-link" routerLink="/login">Đăng nhập</a>
           </li>
-          <li class="nav-item item-user">
-            <a class="nav-link">Wellcome- ThanhDev<i class="fa-solid fa-user" style="margin-left: 3px;"></i></a>
+          <li class="nav-item item-user" *ngIf="user">
+            <a class="nav-link"><i class="fa-solid fa-user" style="margin-right: 5px;"></i>Wellcome, {{user.fullName}}</a>
           </li>
         </ul>
       </div>

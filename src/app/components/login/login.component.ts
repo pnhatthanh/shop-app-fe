@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
           },
           error: (error: any) => {
             debugger;
-            alert(error.error.message);
+            alert(error.error);
           },
           complete:()=>{}
         })  

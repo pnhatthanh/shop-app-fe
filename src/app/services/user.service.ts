@@ -5,7 +5,6 @@ import { RegisterDto } from '../dtos/user/register.dto';
 import { Observable } from 'rxjs';
 import { LoginDto } from '../dtos/user/login.dto';
 import { UserDetails } from '../responses/UserDetails';
-import { JsonPipe } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })

@@ -10,20 +10,20 @@
             <form action="">
                 <div class="mb-3">
                     <label for="name" class="form-label">Họ và tên</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" [(ngModel)]="orderDto.fullName" name="fullName" id="name">
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Số điện thoại</label>
-                    <input type="text" class="form-control" id="phone">
+                    <input type="text" class="form-control" [(ngModel)]="orderDto.phoneNumber" name="phoneNumber" id="phone">
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Địa chỉ</label>
-                    <input type="text" class="form-control" id="address">
+                    <input type="text" class="form-control" id="address" [(ngModel)]="orderDto.address" name="address">
                 </div>
                 <div class="mb-3">
                     <label for="note" class="form-label">Ghi chú</label>
                     <textarea class="form-control note-area" id="note"
-                        placeholder="Nhập ghi chú của bạn ở đây..."></textarea>
+                        placeholder="Nhập ghi chú của bạn ở đây..." [(ngModel)]="orderDto.note" name="note"></textarea>
                 </div>
             </form>
         </div>
@@ -60,17 +60,17 @@
             </div>
             <div class="mb-3 shipping">
                 <label for="shipping-method" class="form-label">Phương thức vận chuyển: </label>
-                <input value="Standard express" type="text" class="form-control shipping-method" id="shipping-method">
+                <input type="text" [(ngModel)]="orderDto.shippingMethod" class="form-control shipping-method" id="shipping-method">
             </div>
             <div class="mb-3 method-act">
                 <label class="form-label">Phương thức thanh toán: </label>
                 <div class="option">
-                        <input class="form-check-input" type="radio" name="payment-method" value="Payment on delivery" id="method-1">
+                        <input class="form-check-input" type="radio" [(ngModel)]="orderDto.paymentMethod" name="paymentMethod" value="Payment on delivery" id="method-1">
                         <label class="form-check-label" for="method-1">
                             Thanh toán khi nhận hàng
                         </label>
                         <br>
-                        <input class="form-check-input" type="radio" name="payment-method" value="Payment by card" id="method-2">
+                        <input class="form-check-input" type="radio" [(ngModel)]="orderDto.paymentMethod" name="paymentMethod" value="Payment by card" id="method-2">
                         <label class="form-check-label" for="method-2">
                             Thẻ tín dụng/ Ghi nợ
                         </label>
@@ -79,7 +79,7 @@
         </div>
     </div>
     <div class="text-center mt-3">
-        <button class="btn btn-gradient">Đặt hàng</button>
+        <button class="btn btn-gradient" (click)="order()">Đặt hàng</button>
     </div>
 </div>
 <app-footer></app-footer>
