@@ -6,6 +6,7 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
 import { OrderComponent } from './components/order/order.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ErrorComponent } from './components/error/error.component';
+import { SuccessOrderComponent } from './components/success-order/success-order.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: 'detail_product/:id', component: DetailProductComponent },
     { path: 'order', component: OrderComponent },
     { path: 'cart', component: CartComponent },
-    { path: '**', component: ErrorComponent }
+    {path:'success-order',component:SuccessOrderComponent},
+    { path: '**', component: ErrorComponent },
 ];

@@ -10,6 +10,8 @@ import { UserDetails } from '../../responses/UserDetails';
 import { UserService } from '../../services/user.service';
 import { orderDto } from '../../dtos/order';
 import { FormsModule } from '@angular/forms';
+import { OrderService } from '../../services/order.service';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 @Component({
   selector: 'app-order',
   standalone: true,
@@ -37,9 +39,11 @@ export class OrderComponent implements OnInit{
     'phoneNumber':''
   };
   constructor(private route:ActivatedRoute,
+    private rotert:Router,
     private productService:ProductService,
     private router:Router,
-    private userService:UserService){}
+    private userService:UserService,
+    private orderService:OrderService){}
   ngOnInit(): void {
     this.user=this.userService.getUserDetailsFromLocalStorage();
     if(this.user==null){
@@ -75,8 +79,12 @@ export class OrderComponent implements OnInit{
     this.orderDto.shippingDate.setDate(this.orderDto.shippingDate.getDate()+3);
     this.orderDto.shippingAddress=this.orderDto.address;
     this.orderDto.totalMoney=this.totalPrice;
-
-
-    
+    this.orderService.createOrder(this.orderDto).subscribe({
+      next:(responses:any)=>{
+        this.router.navigate(['/success-order']);
+      },
+      error:()=>{alert("ERROR")},
+      complete:()=>{}
+    })
   }
 }
