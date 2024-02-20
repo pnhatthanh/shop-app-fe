@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   limit: number = 12;
   idCategory:number=0;
   keyword:string="";
+  openModal:boolean=false;
   constructor(private router: Router,
     private productService: ProductService,
     private categoryService: CategoryService,
@@ -88,11 +89,7 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(id:number){
-     const item:Item={
-      'idProduct':id,
-      'quantity':1
-     };
-     this.cartService.addToCart(item);
+    this.openModal=true;
   }
 
   toBuy(id:number){
@@ -102,4 +99,10 @@ export class HomeComponent implements OnInit {
     console.log(items);
     this.router.navigate(['/order'], { queryParams: { items: JSON.stringify(items) } });
   }
+  closeModal(){
+    this.openModal=false;
+  }
+  preventClose(event: MouseEvent): void {
+    event.stopPropagation();
+}
 }

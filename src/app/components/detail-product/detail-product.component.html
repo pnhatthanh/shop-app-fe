@@ -10,29 +10,27 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="square-image">
-                            <img [src]="this.arrImg[index]"
-                                alt="Product Image" class="product-image">
+                            <img [src]="this.arrImg[index]" alt="Product Image" class="product-image">
                         </div>
                     </div>
                 </div>
-                <button (click)="decreaseIndex()" class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                    data-bs-slide="prev">
+                <button (click)="decreaseIndex()" class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselExample" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button (click)="increaseIndex()" class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                    data-bs-slide="next">
+                <button (click)="increaseIndex()" class="carousel-control-next" type="button"
+                    data-bs-target="#carouselExample" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            <div class="row ml-10" >
+            <div class="row ml-10">
                 <div class="thumbnail-container">
-                    <div class="thumbnail-item" *ngFor="let img of arrImg; let i=index"
-                         [class.active]="i ==this.index"
-                         (click)="changeIndex(i)">
+                    <div class="thumbnail-item" *ngFor="let img of arrImg; let i=index" [class.active]="i ==this.index"
+                        (click)="changeIndex(i)">
                         <img [src]="img" alt="Product Image" class="thumbnail-image">
-                    </div>       
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,12 +38,13 @@
             <div class="product-detail">
                 <h2>Thông tin chi tiết sản phẩm</h2>
                 <p style="font-size: 18px;">{{detailProduct?.description}}</p>
-                <p style="font-size: 18px;">Giá: {{detailProduct?.price?.toLocaleString('vi-VN',{ style: 'currency', currency:'VND' })}}</p>
+                <p style="font-size: 18px;">Giá: {{detailProduct?.price?.toLocaleString('vi-VN',{ style: 'currency',
+                    currency:'VND' })}}</p>
                 <div class="product-quantity">
-                    <span class="quantity-instruc">Số lượng:    </span>
+                    <span class="quantity-instruc">Số lượng: </span>
                     <div class="border-warpper">
                         <button (click)="reduce()">-</button>
-                        <input type="text" [ngModel]="this.quantity" style="width: 50px; text-align: center;" >
+                        <input type="text" [ngModel]="this.quantity" style="width: 50px; text-align: center;">
                         <button (click)="increase()">+</button>
                     </div>
                 </div>

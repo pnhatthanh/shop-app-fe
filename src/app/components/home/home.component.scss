@@ -163,3 +163,51 @@
     color: black;
     cursor: pointer;
 }
+
+.product-quantity{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.quantity-instruc{
+    margin-right: 20px;
+    font-size: 18px;
+}
+.product-quantity button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    width: 35px;
+}
+.product-quantity button:hover{
+    background: linear-gradient(rgb(34, 39, 70), rgb(40, 52, 98));
+}
+.card{
+    display: none;
+    background-color: rgb(40, 52, 98);
+    color: #fff;
+    min-width: 470px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   
+}
+.card-img, .card-content{
+    width: 50%;
+    padding: 5px 15px;
+}
+.modal-container {
+    display: none; /* Mặc định ẩn modal */
+    position: fixed; /* Định vị cố định để modal không bị ảnh hưởng bởi cuộn trang */
+    top: 0;
+    left: 0;
+    width: 100%; /* Chiều rộng của modal bằng 100% chiều rộng của cửa sổ trình duyệt */
+    height: 100%;
+    z-index: 999;
+}
+.modal-display{
+    display: block;
+}
