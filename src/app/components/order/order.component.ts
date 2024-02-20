@@ -65,7 +65,7 @@ export class OrderComponent implements OnInit{
           product.url_img = `http://localhost:8080/api/v1/products/thumbnail/${product.thumbnail}`;
           product.quantity = item.quantity;
           this.products.push(product);
-          this.totalPrice+=product.price;
+          this.totalPrice+=product.price*product.quantity;
         },
         error: (error: any) => {
           alert(`Error ${error.error}`);

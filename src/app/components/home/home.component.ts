@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
   idCategory:number=0;
   keyword:string="";
   openModal:boolean=false;
+  product?:Product|null;
+  quantity:number=1;
   constructor(private router: Router,
     private productService: ProductService,
     private categoryService: CategoryService,
@@ -89,12 +91,20 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(id:number){
-    this.openModal=true;
+    const item:Item={
+      'idProduct':id,
+      'quantity':this.quantity
+     };
+     this.cartService.addToCart(item);
+     this.openModal=false;
   }
-
+  open(product:Product){
+    this.openModal=true;
+    this.product=product;
+  }
   toBuy(id:number){
     const items: Item[] = [
-      { idProduct:id,quantity:1 }
+      { idProduct:id,quantity:this.quantity}
     ];
     console.log(items);
     this.router.navigate(['/order'], { queryParams: { items: JSON.stringify(items) } });
@@ -104,5 +114,14 @@ export class HomeComponent implements OnInit {
   }
   preventClose(event: MouseEvent): void {
     event.stopPropagation();
-}
+  }
+  reduce() {
+    if (this.quantity > 1) {
+      debugger
+      this.quantity--;
+    }
+  }
+  increase() {
+    this.quantity++;
+  }
 }
