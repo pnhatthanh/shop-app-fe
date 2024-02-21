@@ -6,6 +6,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../responses/Product';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { Item } from '../../dtos/item';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -15,6 +16,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 })
 export class CartComponent implements OnInit {
   products: Product[] = [];
+  selectProducts:Product[]=[];
   constructor(private cartService: CartService,
     private productService: ProductService,
     private router:Router
@@ -47,6 +49,30 @@ export class CartComponent implements OnInit {
   }
 
   toPay(){
-    this.router.navigate(["/order"])
+    if(this.selectProducts.length==0){
+      alert("Chua co san pham nao duoc chon")
+    }else{
+      const items:Item[]=[];
+    for(let product of this.selectProducts){
+      const item:Item={
+        idProduct:product.id,
+        quantity:product.quantity
+      };
+      items.push(item);
+    }
+    this.router.navigate(['/order'], { queryParams: { items: JSON.stringify(items) } })
+    }
+  }
+
+  selectProduct(product:Product,event:Event){
+    if (event.target instanceof HTMLInputElement) {
+      const isChecked = event.target.checked;
+      if(isChecked){
+        this.selectProducts.push(product);
+      }else{
+        const index = this.selectProducts.indexOf(product);
+        this.selectProducts.splice(index, 1);
+      }
+    }
   }
 }
