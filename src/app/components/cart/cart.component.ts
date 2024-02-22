@@ -58,6 +58,7 @@ export class CartComponent implements OnInit {
         idProduct:product.id,
         quantity:product.quantity
       };
+      this.cartService.deleteItem(item.idProduct);
       items.push(item);
     }
     this.router.navigate(['/order'], { queryParams: { items: JSON.stringify(items) } })

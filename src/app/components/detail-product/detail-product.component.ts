@@ -7,6 +7,8 @@ import { DetailProduct } from '../../responses/DetailProduct';
 import { FormsModule } from '@angular/forms';
 import { ProductImg } from '../../responses/ProductImage';
 import { CommonModule } from '@angular/common';
+import { Item } from '../../dtos/item';
+import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-detail-product',
   standalone: true,
@@ -21,7 +23,9 @@ export class DetailProductComponent implements OnInit {
   index: number = 0;
   arrImg: string[] = [];
   constructor(private productService: ProductService,
-    private router: ActivatedRoute) { }
+    private router: ActivatedRoute,
+    private cartService:CartService,
+    private route:Router) { }
   ngOnInit(): void {
     this.router.params.subscribe(params => {
       const id = params['id'];
@@ -75,5 +79,20 @@ export class DetailProductComponent implements OnInit {
   }
   increase() {
     this.quantity++;
+  }
+
+  addToCart(){
+    const item:Item={
+      'idProduct':this.productId,
+      'quantity':this.quantity
+     };
+     this.cartService.addToCart(item);
+  }
+
+  toBuy(){
+    const items: Item[] = [
+      { idProduct:this.productId,quantity:this.quantity}
+    ];
+    this.route.navigate(['/order'], { queryParams: { items: JSON.stringify(items) } });
   }
 }

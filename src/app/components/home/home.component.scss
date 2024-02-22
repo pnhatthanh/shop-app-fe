@@ -207,7 +207,17 @@
     width: 100%; /* Chiều rộng của modal bằng 100% chiều rộng của cửa sổ trình duyệt */
     height: 100%;
     z-index: 999;
+    background-color: rgba(29, 42, 70, 0.6);
 }
 .modal-display{
     display: block;
+}
+.close-icon{
+    float: right;
+    padding: 10px;
+    border-radius: 2px;
+}
+.close-icon:hover{
+    background-color: red;
+    cursor: pointer;
 }

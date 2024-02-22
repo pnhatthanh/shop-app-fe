@@ -106,7 +106,6 @@ export class HomeComponent implements OnInit {
     const items: Item[] = [
       { idProduct:id,quantity:this.quantity}
     ];
-    console.log(items);
     this.router.navigate(['/order'], { queryParams: { items: JSON.stringify(items) } });
   }
   closeModal(){
