@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {  Router, RouterModule } from '@angular/router';
 import { UserDetails } from '../../responses/UserDetails';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
@@ -13,7 +13,12 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent implements OnInit{
   user?:UserDetails|null;
   constructor(private userService:UserService){}
+
   ngOnInit(): void {
     this.user=this.userService.getUserDetailsFromLocalStorage();
+  }
+  logout(){
+    localStorage.clear();
+    window.location.reload();
   }
 }
