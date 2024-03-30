@@ -18,6 +18,7 @@ export class DetailOrderComponent implements OnInit{
 
   order?:Order;
   details:DetailOrder[]=[];
+  totalPrice:number=0;
 
   constructor(private route:ActivatedRoute,
       private orderService:OrderService){}
@@ -33,6 +34,7 @@ export class DetailOrderComponent implements OnInit{
 
   loadOrder(){
     if(this.order!==undefined){
+      this.totalPrice=this.order.totalMoney;
       this.orderService.getDetailOrder(this.order.id).subscribe({
         next:(response:any)=>{
           this.details=response;

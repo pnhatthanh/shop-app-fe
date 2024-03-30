@@ -24,7 +24,7 @@
                     <td>{{order.orderDate | date: 'dd-MM-yyyy'}}</td>
                     <td>{{order.totalMoney.toLocaleString('vi-VN',{ style: 'currency', currency:'VND' })}}</td>
                     <td>{{order.status}}</td>
-                    <td><i class="cancell fa-solid fa-xmark"></i></td>
+                    <td><i class="cancell fa-solid fa-xmark" (click)="remove_order(order.id,$event)"></i></td>
                 </tr>
             </tbody>
         </table>

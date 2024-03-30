@@ -35,6 +35,14 @@ export class OrderService {
     const headers=new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.get<DetailOrder[]>(`http://localhost:8080/api/v1/order/user/${idOrder}`,{headers});
+    return this.http.get<DetailOrder[]>(`http://localhost:8080/api/v1/detail_order/order/${idOrder}`,{headers});
+  }
+
+  deleteOrder(idOrder:number):Observable<any>{
+    const token=this.tokenService.getToken();
+    const headers=new HttpHeaders({
+      'Authorization':`Bearer ${token}`
+    });
+    return this.http.delete<any>(`http://localhost:8080/api/v1/order/${idOrder}`,{headers});
   }
 }

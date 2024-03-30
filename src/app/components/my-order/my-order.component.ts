@@ -44,5 +44,19 @@ export class MyOrderComponent implements OnInit{
   toDetailOrder(order:Order){
     this.router.navigate(['/detail-order'], { queryParams: { order: JSON.stringify(order) } })
   }
+  remove_order(id:number,event:MouseEvent){
+    event.stopPropagation();
+    this.orderSerivce.deleteOrder(id).subscribe({
+      next:(response:any)=>{
+        const message=response.message;
+        alert(message);
+        window.location.reload();
+      },
+      error:(error:any)=>{
+        alert("Cannot remove this order,"+error.message);
+      },
+      complete:()=>{}
+    })
+  }
     
 }
